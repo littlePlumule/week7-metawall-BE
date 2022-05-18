@@ -36,11 +36,12 @@ const posts = {
 
   async createdPost(req, res) {
     try {
-      const { content, user } = req.body;
+      const { content, user, image } = req.body;
       if(content && user) {
         await Post.create({
           user,
           content,
+          image,
         })
         const post = await Post.find().populate({
           path: 'user',
