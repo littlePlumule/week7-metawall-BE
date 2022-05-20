@@ -1,9 +1,19 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  name: {
+  nickname: {
     type: String,
-    required: [true, '姓名未填寫'],
+    required: [true, '暱稱未填寫'],
+  },
+  gender: {
+    type: String,
+    enum:['male', 'female'],
+    default: 'male',
+    required: [true, '性別未填寫']
+  },
+  avatar: {
+    type: String,
+    default: ''
   },
   email: {
     type: String,
@@ -18,10 +28,6 @@ const userSchema = new mongoose.Schema({
       message: '請輸入有效電子郵件',
     },
     required: [true, 'email 未填寫'],
-  },
-  photo: {
-    type: String,
-    default: ''
   },
   createdAt: {
     type: Date,

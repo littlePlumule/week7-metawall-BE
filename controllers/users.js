@@ -1,5 +1,6 @@
 const User = require('../models/users');
-const { success, fail, notFound } = require('../service/response');
+const { success } = require('../service/response');
+const appError = require('../service/appError');
 
 const users = {
   async getUsers(req, res) {
@@ -7,80 +8,52 @@ const users = {
     success(res, allUsers); 
   },
 
-  async getUser(req, res) {
-    try {
-      const id = req.params.id;
-      const user = await User.findById(id);
-      if(user) {
-        success(res, user);
-      } else {
-        fail(res, '取得失敗, id 不匹配');
-      }
-    } catch(error) {
-      fail(res, error);
-    }
+  async getUser(req, res, next) {
+    const id = req.params.id;
+    const user = await User.findById(id);
+    if(!user) return next(appError(400, '取得失敗, id 不匹配'));
+    success(res, user);
   },
 
   async createdUser(req, res) {
-    try {
-      const { name, email, photo } = req.body;
-      const newUser = await User.create({
-        name,
-        email,
-        photo
-      });
-      success(res, newUser);
-    } catch(error) {
-      fail(res, error);
+    const { nickname, email, avatar, gender } = req.body;
+    const newUser = await User.create({
+      nickname,
+      email,
+      avatar,
+      gender
+    });
+    success(res, newUser);
+  },
+
+  async deleteUsers(req, res, next) {
+    if(req.originalUrl == '/users/') {
+      return next(appError(404, '無此路徑'));
+    } else {
+      await User.deleteMany({});
+      const allUser = await User.find();
+      success(res, allUser);
     }
   },
 
-  async deleteUsers(req, res) {
-    try {
-      if(req.originalUrl == '/users/') {
-        notFound(res);
-      } else {
-        await User.deleteMany({});
-        const allUser = await User.find();
-        success(res, allUser);
-      }
-    } catch(error) {
-      fail(res, error);
-    }
+  async deleteUser(req, res, next) {
+    const id = req.params.id;
+    const isDelete = await User.findByIdAndDelete(id);
+    if(!isDelete) return next(appError(400, '刪除失敗, id 不匹配'));
+    const allUser = await User.find();
+    success(res, allUser);
   },
 
-  async deleteUser(req, res) {
-    try {
-      const id = req.params.id;
-      const isDelete = await User.findByIdAndDelete(id);
-      if(isDelete) {
-        const allUser = await User.find();
-        success(res, allUser);
-      } else {
-        fail(res, '刪除失敗, id 不匹配');
-      }
-    } catch(error) {
-      fail(res, error);
-    }
-  },
-
-  async updateUser(req, res) {
-    try {
-      const id = req.params.id;
-      const { name, email, photo } = req.body;
-      const updateUser = await User.findByIdAndUpdate(id, {
-        name,
-        email,
-        photo
-      }, {new: true});
-      if(updateUser) {
-        success(res, updateUser);
-      } else {
-        fail(res, '更新失敗, id 不匹配')
-      }
-    } catch(error) {
-      fail(res, error);
-    }
+  async updateUser(req, res, next) {
+    const id = req.params.id;
+    const { nickname, avatar, gender } = req.body;
+    const updateUser = await User.findByIdAndUpdate(id, {
+      nickname,
+      avatar,
+      gender
+    }, {new: true});
+    if(!updateUser) return next(appError(400, '更新失敗, id 不匹配'));
+    success(res, updateUser);
   },
 }
 

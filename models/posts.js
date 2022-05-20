@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const postsSchema = new mongoose.Schema({
-  user: {
+  author: {
     type: mongoose.Schema.ObjectId,
     ref: 'user',
-    required: [true, '貼文 ID 未填寫'],
+    required: [true, '作者 ID 未填寫'],
   },
   image: {
     type: String,
@@ -21,7 +21,6 @@ const postsSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    select: false,
   }
 }, {versionKey: false});
 
