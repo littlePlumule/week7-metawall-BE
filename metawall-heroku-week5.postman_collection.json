@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "e8f24e59-3ba8-4942-bdfb-b6be2abd13f2",
+		"name": "metawall-heroku-week5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "取得所有 posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得單筆 post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/post/628741f74f77375bd8d0b6f2",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"post",
+						"628741f74f77375bd8d0b6f2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增單筆 post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author\": \"6287419cc6b1eb7fe5e1f542\",\r\n    \"content\":\"ccc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/post",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除所有 posts",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除單筆 post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/post/628744a1303474f8d419e6e3",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"post",
+						"628744a1303474f8d419e6e3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改單筆 post",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"heeeeee\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/post/628744a1303474f8d419e6e3",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"post",
+						"628744a1303474f8d419e6e3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得所有 users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/users",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得單筆 user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/user/6287419cc6b1eb7fe5e1f542",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"6287419cc6b1eb7fe5e1f542"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增單筆 user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nickname\": \"hahaha\",\r\n    \"email\": \"eee@aaa.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/user",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除所有 users",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/users",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除單筆 user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/user/628744c8303474f8d419e6e8",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"628744c8303474f8d419e6e8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改單筆 user",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nickname\": \"heeeeeee\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sleepy-bayou-53662.herokuapp.com/user/628744c8303474f8d419e6e8",
+					"protocol": "https",
+					"host": [
+						"sleepy-bayou-53662",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"628744c8303474f8d419e6e8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
