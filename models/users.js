@@ -29,6 +29,12 @@ const userSchema = new mongoose.Schema({
     },
     required: [true, 'email 未填寫'],
   },
+  password: {
+    type: String,
+    minlength: 8,
+    select: false,
+    required: [true, '密碼未填寫'],
+  },
   createdAt: {
     type: Date,
     default: Date.now,
