@@ -26,6 +26,7 @@ const checkPostId = async (req, res, next) => {
   if (!post) {
     return next(appError(400, '無此篇貼文'))
   }
+  next()
 }
 
 module.exports = { checkUserId, checkPostId };
