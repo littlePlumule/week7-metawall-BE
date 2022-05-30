@@ -1,0 +1,565 @@
+{
+	"info": {
+		"_postman_id": "297e4d1b-3b83-4603-8c2c-dfa17067862f",
+		"name": "metawall-heroku-week6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "取得所有 posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/posts",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得單筆 post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/post/629506ba3955ffccc0169cac",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"post",
+								"629506ba3955ffccc0169cac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增單筆 post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": \"629506ca3955ffccc0169cae\",\r\n    \"content\":\"bbb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku_url}}/post",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除所有 posts",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/posts",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單筆 post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/post/628741f94f77375bd8d0b6f4",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"post",
+								"628741f94f77375bd8d0b6f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改單筆 post",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"aaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku_url}}/post/629506ba3955ffccc0169cac",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"post",
+								"629506ba3955ffccc0169cac"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "取得所有 users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/users",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得單筆 user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/user/629505fc6df6292e013bb9d1",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"user",
+								"629505fc6df6292e013bb9d1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增單筆 user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\": \"aaa\",\r\n    \"email\": \"aaa@aaa.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku_url}}/user",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除所有 users",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/users",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單筆 user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/user/628740cc67edca1a572492a0",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"user",
+								"628740cc67edca1a572492a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改單筆 user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\": \"aaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku_url}}/user/629505fc6df6292e013bb9d1",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"user",
+								"629505fc6df6292e013bb9d1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改密碼",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"23456789\",\r\n    \"confirmPassword\": \"23456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku_url}}/users/updatePassword",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"users",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得個人資料",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/users/profile",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改個人資料",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\": \"321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku_url}}/users/profile",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "註冊",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var body = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", body.user.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\": \"bbb\",\r\n    \"email\": \"bbb@bbb.com\",\r\n    \"password\": \"12345678\",\r\n    \"confirmPassword\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku_url}}/users/sign_up",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"users",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登入",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var body = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", body.user.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aaa@aaa.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku_url}}/users/sign_in",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"users",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "follow",
+			"item": [
+				{
+					"name": "追蹤",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/users/follows/629505fc6df6292e013bb9d1",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"users",
+								"follows",
+								"629505fc6df6292e013bb9d1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消追蹤",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{heroku_url}}/users/follows/629505fc6df6292e013bb9d1",
+							"host": [
+								"{{heroku_url}}"
+							],
+							"path": [
+								"users",
+								"follows",
+								"629505fc6df6292e013bb9d1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
