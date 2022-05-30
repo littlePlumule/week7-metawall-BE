@@ -20,7 +20,6 @@ const posts = {
       path: 'author',
       select: 'nickname avatar'
     });
-    if(!post) return next(appError(400, '取得失敗, id 不匹配'));
     success(res, post);
   },
 
@@ -45,7 +44,6 @@ const posts = {
   async deletePost(req, res, next) {    
     const id = req.params.id;
     const isDelete = await Post.findByIdAndDelete(id);
-    if(!isDelete) return next(appError(400, '刪除失敗, id 不匹配'));
     const allPosts = await Post.find();
     success(res, allPosts);
   },
@@ -58,7 +56,6 @@ const posts = {
       image,
       content
     }, {new: true});
-    if(!updatePost) return next(appError(400, '更新失敗, id 不匹配'));
     success(res, updatePost);
   },
 }
