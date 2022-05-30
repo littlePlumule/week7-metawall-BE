@@ -42,6 +42,9 @@ const users = {
       return next(appError(400, '帳號密碼不可為空'));
     }
     const user = await User.findOne({ email }).select('+password');
+    if (!user) {
+      return next(appError(400, '無此用戶'))
+    }
     const auth = await bcrypt.compare(password, user.password);
     if (!auth) {
       return next(appError(400, '您的密碼不正確'));
