@@ -24,10 +24,10 @@ const posts = {
   },
 
   async createdPost(req, res, next) {    
-    const { content, author, image } = req.body;
-    if(!content || !author) return next(appError(400, '新增失敗, 欄位未填寫完整'));
+    const { user, body: {content, image}} = req;
+    if(!content || content.trim().length === 0) return next(appError(400, '欄位未填寫完整'));
     const post = await Post.create({
-      author,
+      author: user,
       content,
       image,
     })
@@ -43,19 +43,29 @@ const posts = {
 
   async deletePost(req, res, next) {    
     const id = req.params.id;
+    const userId = req.user.id
+    const post = await Post.findById(id)
+    if (post.author.toString() !== userId) {
+      return next(appError(400, '使用者不同, 無此權限'));
+    }
     const isDelete = await Post.findByIdAndDelete(id);
     const allPosts = await Post.find();
     success(res, allPosts);
   },
 
   async updatePost(req, res, next) {    
+    const userId = req.user.id
     const id = req.params.id;
     const { image, content } = req.body;
     if(!image && !content) return next(appError(400, '請輸入要跟新的貼文或圖片'));
+    const post = await Post.findById(id)
+    if (post.author.toString() !== userId) {
+      return next(appError(400, '使用者不同, 無此權限'));
+    }
     const updatePost = await Post.findByIdAndUpdate(id, {
       image,
       content
-    }, {new: true});
+    }, { new: true, runValidators: true });
     success(res, updatePost);
   },
 }

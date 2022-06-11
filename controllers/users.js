@@ -4,7 +4,6 @@ const { generateSendJWT } = require('../service/auth');
 const User = require('../models/users');
 const { success } = require('../service/response');
 const appError = require('../service/appError');
-const req = require('express/lib/request');
 
 const users = {
   async signup(req, res, next) {
@@ -13,13 +12,21 @@ const users = {
     if (!email || !password || !confirmPassword || !nickname) {
       return next(appError(400, "欄位未填寫正確！"));
     }
-    // 密碼正確
+    // 暱稱至少 2 個字以上
+    if (nickname.length < 2) {
+      return next(appError(400, "暱稱至少 2 個字以上"))
+    }
+    // 密碼不一致！
     if (password !== confirmPassword) {
       return next(appError(400, "密碼不一致！"));
     }
-    // 密碼 8 碼以上
-    if (!validator.isLength(password, { min: 8 })) {
-      return next(appError(400, "密碼字數低於 8 碼"));
+    // 密碼 8 碼以上, 英數混合
+    if (!validator.isStrongPassword(password, {
+      minLength: 8,
+      minUppercase: 0,
+      minSymbols: 0,
+    })) {
+      return next(appError(400, "密碼需至少 8 碼以上，並英數混合"));
     }
     // 是否為 Email
     if (!validator.isEmail(email)) {
@@ -40,6 +47,16 @@ const users = {
     const { email, password } = req.body;
     if (!email || !password) {
       return next(appError(400, '帳號密碼不可為空'));
+    }
+    if (!validator.isEmail(email)) {
+      return next(appError(400, "Email 格式不正確"));
+    }
+    if (!validator.isStrongPassword(password, {
+      minLength: 8,
+      minUppercase: 0,
+      minSymbols: 0,
+    })) {
+      return next(appError(400, "密碼需至少 8 碼以上，並英數混合"));
     }
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
@@ -63,8 +80,12 @@ const users = {
       return next(appError(400, '密碼不一致'));
     }
 
-    if (!validator.isLength(password, { min: 8 })) {
-      return next(appError(400, "密碼字數低於 8 碼"));
+    if (!validator.isStrongPassword(password, {
+      minLength: 8,
+      minUppercase: 0,
+      minSymbols: 0,
+    })) {
+      return next(appError(400, "密碼需至少 8 碼以上，並英數混合"));
     }
 
     const newPassword = await bcrypt.hash(password, 12);
@@ -84,7 +105,10 @@ const users = {
     if (!nickname || nickname.trim().length === 0) {
       return next(appError(400, '請填寫暱稱'))
     }
-    const profile = await User.findByIdAndUpdate(user.id, { nickname, gender, avatar }, { new: true });
+    if (nickname.length < 2) {
+      return next(appError(400, "暱稱至少 2 個字以上"))
+    }
+    const profile = await User.findByIdAndUpdate(user.id, { nickname, gender, avatar }, { new: true, runValidators: true });
     success(res, profile);
   },
 
@@ -134,7 +158,7 @@ const users = {
       nickname,
       avatar,
       gender
-    }, { new: true });
+    }, { new: true, runValidators: true });
     success(res, updateUser);
   },
 }

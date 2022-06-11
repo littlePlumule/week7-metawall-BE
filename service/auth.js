@@ -35,15 +35,12 @@ const isAuth = handleErrorAsync(async (req, res, next) => {
   // 驗證 token 正確性
   const decoded = await new Promise((resolve, reject) => {
     jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(payload)
-      }
-    })
-  })
+      err
+        ? reject(next(appError(401, 'token 驗證錯誤')))
+        : resolve(payload)
+    });
+  });
   const currentUser = await User.findById(decoded.id);
-
   req.user = currentUser;
   next();
 });
