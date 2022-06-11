@@ -43,13 +43,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{heroku_url}}/post/62a326f5224ab8eb1bedab67",
+							"raw": "{{heroku_url}}/post/62a4897682c09eb06e5bb6f6",
 							"host": [
 								"{{heroku_url}}"
 							],
 							"path": [
 								"post",
-								"62a326f5224ab8eb1bedab67"
+								"62a4897682c09eb06e5bb6f6"
 							]
 						}
 					},
@@ -68,7 +68,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"content\":\"aaa\"\r\n}",
+							"raw": "{\r\n    \"content\":\"bbb3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -122,13 +122,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{heroku_url}}/post/62a326f5224ab8eb1bedab67",
+							"raw": "{{heroku_url}}/post/62a4897682c09eb06e5bb6f6",
 							"host": [
 								"{{heroku_url}}"
 							],
 							"path": [
 								"post",
-								"62a326f5224ab8eb1bedab67"
+								"62a4897682c09eb06e5bb6f6"
 							]
 						}
 					},
@@ -155,13 +155,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{heroku_url}}/post/62a326f5224ab8eb1bedab67",
+							"raw": "{{heroku_url}}/post/62a4897682c09eb06e5bb6f6",
 							"host": [
 								"{{heroku_url}}"
 							],
 							"path": [
 								"post",
-								"62a326f5224ab8eb1bedab67"
+								"62a4897682c09eb06e5bb6f6"
 							]
 						}
 					},
@@ -401,7 +401,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nickname\": \"321\"\r\n}",
+							"raw": "{\r\n    \"nickname\": \"bbb\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -445,7 +445,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nickname\": \"cc\",\r\n    \"email\": \"ccc@ccc.com\",\r\n    \"password\": \"c1234567\",\r\n    \"confirmPassword\": \"c1234567\"\r\n}",
+							"raw": "{\r\n    \"nickname\": \"bbb\",\r\n    \"email\": \"bbb@bbb.com\",\r\n    \"password\": \"b1234567\",\r\n    \"confirmPassword\": \"b1234567\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -521,14 +521,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{heroku_url}}/users/follows/id",
+							"raw": "{{heroku_url}}/users/follows/62a4895782c09eb06e5bb6ea",
 							"host": [
 								"{{heroku_url}}"
 							],
 							"path": [
 								"users",
 								"follows",
-								"id"
+								"62a4895782c09eb06e5bb6ea"
 							]
 						}
 					},
@@ -538,16 +538,22 @@
 					"name": "取消追蹤",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{heroku_url}}/users/follows/628a30e712aedda846b566a0",
+							"raw": "{{heroku_url}}/users/follows/62a4895782c09eb06e5bb6ea",
 							"host": [
 								"{{heroku_url}}"
 							],
 							"path": [
 								"users",
 								"follows",
-								"628a30e712aedda846b566a0"
+								"62a4895782c09eb06e5bb6ea"
 							]
 						}
 					},
