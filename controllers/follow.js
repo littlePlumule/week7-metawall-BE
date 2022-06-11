@@ -71,17 +71,29 @@ const followControllers = {
 
     const existedTracking = await Follow.findOne({
       editor: user.id,
-      following: otherUser
+      following: otherUser,
+      logicDeleteFlag: false
     })
 
     if (existedTracking) {
       return next(appError(400, '已追蹤該會員'));
     }
 
-    await Follow.create({
+    await Follow.findOneAndUpdate({
       editor: user.id,
       following: otherUser
+    },
+    {
+      $setOnInsert: {
+        editor: user.id,
+        following: otherUser
+      },
+      $set: {logicDeleteFlag: false}
+    },
+    {
+      upsert: true
     });
+
     success(res, '追蹤成功');
   },
   async deleteFollow(req, res, next) {
@@ -90,13 +102,24 @@ const followControllers = {
     const existedTracking = await Follow.findOne({
       editor: user.id,
       following: otherUser,
+      logicDeleteFlag: true
     });
     if (!existedTracking) {
       return next(appError(400, '尚未追蹤該用戶'))
     }
-    await Follow.deleteOne({
+    await Follow.findOneAndUpdate({
       editor: user.id,
       following: otherUser,
+    },
+    {
+      $setOnInsert: {
+        editor: user.id,
+        following: otherUser
+      },
+      $set: {logicDeleteFlag: true}
+    },
+    {
+      upsert: true
     });
     success(res, '取消追蹤成功')
   },

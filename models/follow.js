@@ -17,6 +17,11 @@ const followSchema = new mongoose.Schema(
       type: Date,
       default: Date.now
     },
+    logicDeleteFlag: {
+      type: Boolean,
+      default: false,
+      select: false,
+    }
   },
   {
     versionKey: false
