@@ -104,7 +104,7 @@ const followControllers = {
       following: otherUser,
       logicDeleteFlag: true
     });
-    if (!existedTracking) {
+    if (existedTracking) {
       return next(appError(400, '尚未追蹤該用戶'))
     }
     await Follow.findOneAndUpdate({
